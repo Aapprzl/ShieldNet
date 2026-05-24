@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1B2A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0A0A0F;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Cyan shield gradient -->
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0099CC;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Inner glow filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Subtle shadow -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#00D4FF" flood-opacity="0.3"/>
+    </filter>
+
+    <!-- Rounded rect clip -->
+    <clipPath id="roundedClip">
+      <rect width="512" height="512" rx="112" ry="112"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" ry="112" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid pattern for depth -->
+  <g clip-path="url(#roundedClip)" opacity="0.04">
+    <line x1="0" y1="128" x2="512" y2="128" stroke="#00D4FF" stroke-width="1"/>
+    <line x1="0" y1="256" x2="512" y2="256" stroke="#00D4FF" stroke-width="1"/>
+    <line x1="0" y1="384" x2="512" y2="384" stroke="#00D4FF" stroke-width="1"/>
+    <line x1="128" y1="0" x2="128" y2="512" stroke="#00D4FF" stroke-width="1"/>
+    <line x1="256" y1="0" x2="256" y2="512" stroke="#00D4FF" stroke-width="1"/>
+    <line x1="384" y1="0" x2="384" y2="512" stroke="#00D4FF" stroke-width="1"/>
+  </g>
+
+  <!-- Shield shape (main) -->
+  <g filter="url(#shadow)">
+    <path d="M256 88
+             L356 128
+             L356 248
+             C356 318 310 374 256 404
+             C202 374 156 318 156 248
+             L156 128
+             Z"
+          fill="url(#shieldGrad)"
+          filter="url(#glow)"/>
+  </g>
+
+  <!-- Shield inner dark layer -->
+  <path d="M256 114
+           L334 148
+           L334 248
+           C334 306 298 352 256 378
+           C214 352 178 306 178 248
+           L178 148
+           Z"
+        fill="#0A1520"
+        opacity="0.85"/>
+
+  <!-- Signal/network arc lines (ad blocking symbol) inside shield -->
+  <!-- X mark representing blocked -->
+  <g stroke="#00E5FF" stroke-width="18" stroke-linecap="round" opacity="0.95">
+    <line x1="216" y1="210" x2="296" y2="290"/>
+    <line x1="296" y1="210" x2="216" y2="290"/>
+  </g>
+
+  <!-- Small dot at top of X — subtle accent -->
+  <circle cx="256" cy="180" r="10" fill="#00E5FF" opacity="0.5"/>
+
+  <!-- Bottom caption line — thin cyan line -->
+  <rect x="176" y="420" width="160" height="3" rx="2" fill="#00D4FF" opacity="0.3"/>
+</svg>
